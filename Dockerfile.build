@@ -3,7 +3,7 @@
 # http://www.squid-cache.org/
 
 FROM stackbrew/ubuntu:saucy
-MAINTAINER Tom Offermann <tom@offermann.us>
+MAINTAINER Alex Sherwin <alex.sherwin@gmail.com>
 
 RUN echo "deb-src http://archive.ubuntu.com/ubuntu saucy main" >> /etc/apt/sources.list
 RUN echo "deb-src http://archive.ubuntu.com/ubuntu/ saucy-updates main" >> /etc/apt/sources.list
