@@ -6,15 +6,13 @@
 # /mnt/squid3/key
 # /mnt/squid3/crt
 
-FROM stackbrew/ubuntu:saucy
+FROM debian:stretch
 MAINTAINER Alex Sherwin <alex.sherwin@gmail.com>
 
-RUN echo "deb http://archive.ubuntu.com/ubuntu saucy main" > /etc/apt/sources.list
-RUN echo "deb http://archive.ubuntu.com/ubuntu/ saucy-updates main" >> /etc/apt/sources.list
-RUN echo "deb http://security.ubuntu.com/ubuntu saucy-security main" >> /etc/apt/sources.list
-RUN echo "deb-src http://archive.ubuntu.com/ubuntu saucy main" >> /etc/apt/sources.list
-RUN echo "deb-src http://archive.ubuntu.com/ubuntu/ saucy-updates main" >> /etc/apt/sources.list
-RUN echo "deb-src http://security.ubuntu.com/ubuntu saucy-security main" >> /etc/apt/sources.list
+RUN echo "deb-src http://httpredir.debian.org/debian stretch main" >> /etc/apt/sources.list
+RUN echo "deb-src http://httpredir.debian.org/debian stretch-updates main" >> /etc/apt/sources.list
+RUN echo "deb-src http://security.debian.org stretch/updates main" >> /etc/apt/sources.list
+
 RUN apt-get update
 RUN apt-get -y upgrade
 
@@ -35,7 +33,7 @@ VOLUME /srv/squid3
 
 # Install run.sh
 ADD bin /usr/local/bin/
-RUN chmod 755 /usr/local/bin/run.sh 
+RUN chmod 755 /usr/local/bin/run.sh
 
 EXPOSE 3128
 CMD ["/usr/local/bin/run.sh"]
